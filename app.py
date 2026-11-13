@@ -134,53 +134,103 @@ st.markdown("""
         letter-spacing: 0.2px;
     }
 
-    /* 5. ĐIỀU HƯỚNG DANH MỤC SIDEBAR (Vibrant Active Gradient Pill) */
+    /* 5. ĐIỀU HƯỚNG DANH MỤC SIDEBAR (Nút hình chữ nhật góc cạnh bo tròn - Màu Hồng Nhạt) */
+    [data-testid="stRadio"] > label,
     [data-testid="stSidebar"] [data-testid="stRadio"] > label {
         display: none !important;
     }
 
+    [data-testid="stRadio"] div[role="radiogroup"],
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] {
-        gap: 6px !important;
+        gap: 8px !important;
+        width: 100% !important;
     }
 
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label {
-        background: transparent !important;
+    /* Tất cả các nút điều hướng: Nút hình chữ nhật bo tròn thanh lịch */
+    [data-testid="stRadio"] div[role="radiogroup"] label,
+    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label,
+    div[role="radiogroup"] label[data-baseweb="radio"],
+    div[role="radiogroup"] label {
+        background: #FFFFFF !important;
+        border: 1.5px solid #EEF2F6 !important;
         border-radius: 14px !important;
-        padding: 12px 16px !important;
-        margin-bottom: 3px !important;
+        padding: 13px 18px !important;
+        margin-bottom: 6px !important;
         font-size: 13.5px !important;
         font-weight: 600 !important;
-        color: #64748B !important;
+        color: #475569 !important;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
         cursor: pointer !important;
-        border: 1px solid transparent !important;
         display: flex !important;
         align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
     }
 
-    /* Ẩn hoàn toàn nút tròn radio mặc định */
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label > div:first-child {
+    /* Ẩn hoàn toàn nút tròn radio mặc định (bullet circle) */
+    [data-testid="stRadio"] div[role="radiogroup"] label input[type="radio"],
+    [data-testid="stRadio"] div[role="radiogroup"] label > input + div,
+    [data-testid="stRadio"] div[role="radiogroup"] label > div:first-of-type,
+    [data-testid="stRadio"] div[role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]):not(:has([data-testid="stMarkdownContainer"])),
+    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label > div:first-child,
+    [data-testid="stRadio"] div[role="radiogroup"] label [class*="radio-outer"],
+    [data-testid="stRadio"] div[role="radiogroup"] label [class*="radio-inner"] {
         display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:hover {
-        background: linear-gradient(90deg, #F0F7FF 0%, #FAF5FF 100%) !important;
-        color: #4F46E5 !important;
+    /* Căn chỉnh nội dung chữ trong nút chữ nhật */
+    [data-testid="stRadio"] div[role="radiogroup"] label [data-testid="stMarkdownContainer"],
+    [data-testid="stRadio"] div[role="radiogroup"] label [data-testid="stMarkdownContainer"] p {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13.5px !important;
+        line-height: 1.4 !important;
+        color: inherit !important;
+    }
+
+    /* Hiệu ứng rê chuột (Hover): Hồng nhạt nhẹ nhàng */
+    [data-testid="stRadio"] div[role="radiogroup"] label:hover,
+    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label:hover {
+        background: #FFF1F4 !important;
+        border-color: #FECDD3 !important;
+        color: #E11D48 !important;
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(244, 63, 94, 0.12) !important;
+    }
+
+    [data-testid="stRadio"] div[role="radiogroup"] label:hover * {
+        color: #E11D48 !important;
+    }
+
+    /* NÚT ĐANG CHỌN (ACTIVE): Nút hình chữ nhật bo tròn MÀU HỒNG NHẠT (Soft Light Pink) */
+    [data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked),
+    [data-testid="stRadio"] div[role="radiogroup"] label:has(input[aria-checked="true"]),
+    [data-testid="stRadio"] div[role="radiogroup"] label[data-checked="true"],
+    [data-testid="stRadio"] div[role="radiogroup"] label[aria-checked="true"],
+    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked) {
+        background: linear-gradient(135deg, #FFF0F3 0%, #FFE4E8 100%) !important;
+        border: 1.8px solid #FDA4AF !important;
+        color: #BE123C !important;
+        box-shadow: 0 6px 18px rgba(244, 63, 94, 0.18) !important;
+        font-weight: 700 !important;
         transform: translateX(4px);
     }
 
-    /* TRẠNG THÁI ACTIVE: Gradient Hoàng Gia Rực Rỡ với bóng đổ màu */
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked),
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label[data-checked="true"] {
-        background: linear-gradient(135deg, #1E75FF 0%, #6366F1 50%, #8B5CF6 100%) !important;
-        color: #FFFFFF !important;
-        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35) !important;
+    [data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked) *,
+    [data-testid="stRadio"] div[role="radiogroup"] label[data-checked="true"] *,
+    [data-testid="stRadio"] div[role="radiogroup"] label[aria-checked="true"] * {
+        color: #BE123C !important;
         font-weight: 700 !important;
-    }
-
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) *,
-    [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label[data-checked="true"] * {
-        color: #FFFFFF !important;
     }
 
     /* 6. WIDGET TIẾN ĐỘ WORKFLOW VỚI BADGES MÀU SẮC */

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowthMetric — Marketing Campaign Analytics Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: 
+                radial-gradient(circle at 5% 10%, rgba(99, 102, 241, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 95% 8%, rgba(236, 72, 153, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 8% 88%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 50% 45%, rgba(6, 182, 212, 0.10) 0%, transparent 50%),
+                #F5F7FC;
+            color: #1E293B;
+            min-height: 100vh;
+            padding: 32px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 28px;
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #1E75FF 0%, #7C3AED 50%, #EC4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 22px;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+        }
+
+        .brand-text h1 {
+            font-size: 19px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1E75FF 0%, #7C3AED 60%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            font-weight: 700;
+            color: #8C9BAE;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .status-pill {
+            background: #DCFCE7;
+            border: 1px solid #86EFAC;
+            color: #15803D;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .user-chip {
+            background: #F8FAFD;
+            border: 1px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 5px 14px 5px 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF5E62, #FF9966);
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        /* Hero Banner */
+        .hero-card {
+            background: #FFFFFF;
+            border-radius: 32px;
+            padding: 40px 48px;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 28px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-left h2 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1E293B;
+            margin-bottom: 12px;
+        }
+
+        .hero-left h2 span {
+            background: linear-gradient(135deg, #1E75FF 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-left p {
+            font-size: 14.5px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1E75FF 0%, #6366F1 50%, #8B5CF6 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 13px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn-pink {
+            background: linear-gradient(135deg, #FFF0F3 0%, #FFE4E8 100%);
+            border: 1.8px solid #FDA4AF;
+            color: #BE123C;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-pink:hover {
+            background: #FFE4EC;
+            transform: translateY(-2px);
+        }
+
+        /* Credit Card Mockup */
+        .cloudcash-card {
+            background: linear-gradient(135deg, #1E75FF 0%, #6366F1 35%, #8B5CF6 70%, #EC4899 100%);
+            border-radius: 24px;
+            padding: 26px 28px;
+            color: #FFFFFF;
+            box-shadow: 0 16px 40px rgba(99, 102, 241, 0.4);
+            position: relative;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-chip {
+            width: 38px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 7px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card-num {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .kpi-card {
+            border-radius: 22px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+        }
+
+        .kpi-card.pink { background: linear-gradient(135deg, #FFF1F2, #FFE4E6); border: 1.5px solid #FECDD3; }
+        .kpi-card.amber { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 1.5px solid #FDE68A; }
+        .kpi-card.green { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border: 1.5px solid #A7F3D0; }
+        .kpi-card.purple { background: linear-gradient(135deg, #FAF5FF, #EDE9FE); border: 1.5px solid #DDD6FE; }
+
+        .kpi-val { font-size: 26px; font-weight: 800; margin-top: 10px; line-height: 1; }
+        .kpi-val.pink { color: #BE123C; }
+        .kpi-val.amber { color: #B45309; }
+        .kpi-val.green { color: #047857; }
+        .kpi-val.purple { color: #6D28D9; }
+
+        .kpi-lbl { font-size: 12.5px; font-weight: 700; color: #64748B; margin-top: 6px; }
+
+        /* Guide Card */
+        .guide-card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 32px 36px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 24px;
+        }
+
+        .guide-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .steps-list {
+            margin-left: 20px;
+            line-height: 1.8;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .steps-list li strong {
+            color: #1E293B;
+        }
+
+        .badge-code {
+            background: #F1F5F9;
+            color: #E11D48;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #8C9BAE;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="brand-wrap">
+                <div class="brand-icon">☁️</div>
+                <div class="brand-text">
+                    <h1>GrowthMetric</h1>
+                    <p>Marketing Campaign Analytics Agent</p>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="status-pill">● System Operational (17/17 PASS)</div>
+                <div class="user-chip">
+                    <div class="user-avatar">VH</div>
+                    <span>Vũ Ruy Hoàng</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-card">
+            <div class="hero-left">
+                <h2>Hệ Thống Phân Tích <span>Multi-touch Attribution</span> & Kiểm Toán Tài Chính</h2>
+                <p>
+                    Tự động làm sạch dữ liệu Google Sheets, ánh xạ 12 cột E-Commerce, đối soát Return Window, phân bổ chi phí ABC và kiểm toán 7 phép kiểm chuẩn doanh nghiệp.
+                </p>
+                <div class="btn-group">
+                    <a href="https://share.streamlit.io" target="_blank" class="btn-primary">
+                        🚀 Mở Bản Tương Tác Streamlit Cloud &gt;
+                    </a>
+                    <a href="#guide" class="btn-pink">
+                        📋 Hướng Dẫn Deploy Miễn Phí
+                    </a>
+                </div>
+            </div>
+            <div class="cloudcash-card">
+                <div class="card-top">
+                    <span style="font-size: 17px; font-weight: 800;">cloudcash</span>
+                    <div class="card-chip"></div>
+                </div>
+                <div class="card-num">5789 •••• •••• 2847</div>
+                <div class="card-bottom">
+                    <div>
+                        <div style="font-size: 9px; opacity: 0.85;">Card Holder</div>
+                        <div style="font-weight: 700; font-size: 12px;">VŨ RUY HOÀNG</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; opacity: 0.85;">Expires</div>
+                        <div style="font-weight: 700; font-size: 12px;">06/28</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 KPI Candy Pastel Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card pink">
+                <div style="font-size: 20px;">💰</div>
+                <div>
+                    <div class="kpi-val pink">19,802,500 đ</div>
+                    <div class="kpi-lbl">Tổng Doanh Thu Phân Bổ</div>
+                </div>
+            </div>
+            <div class="kpi-card amber">
+                <div style="font-size: 20px;">🛒</div>
+                <div>
+                    <div class="kpi-val amber">19,635,000 đ</div>
+                    <div class="kpi-lbl">Net Sales Sau Hoàn Trả</div>
+                </div>
+            </div>
+            <div class="kpi-card green">
+                <div style="font-size: 20px;">💎</div>
+                <div>
+                    <div class="kpi-val green">14,281,200 đ</div>
+                    <div class="kpi-lbl">Net Contribution (Lợi Nhuận)</div>
+                </div>
+            </div>
+            <div class="kpi-card purple">
+                <div style="font-size: 20px;">📊</div>
+                <div>
+                    <div class="kpi-val purple">100% PASS</div>
+                    <div class="kpi-lbl">Verification Suite (17 Tests)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment Guide -->
+        <div class="guide-card" id="guide">
+            <h3>💡 Vì Sao Streamlit Báo Lỗi 404 Trên Vercel & Cách Deploy Chuẩn 1-Click</h3>
+            <p style="font-size: 14px; color: #64748B; margin-bottom: 16px;">
+                Streamlit là ứng dụng Python server stateful duy trì kết nối WebSocket thời gian thực (<span class="badge-code">/_stcore/stream</span>). Vercel là nền tảng Serverless tĩnh chỉ chạy API ngắn hạn. Nền tảng chính thức, miễn phí 100% được khuyên dùng là <strong>Streamlit Community Cloud</strong>:
+            </p>
+            <ol class="steps-list">
+                <li>
+                    <strong>Bước 1:</strong> Đăng nhập vào <strong><a href="https://share.streamlit.io" target="_blank" style="color:#1E75FF;">share.streamlit.io</a></strong> bằng tài khoản GitHub <span class="badge-code">hoang207-ship</span>.
+                </li>
+                <li>
+                    <strong>Bước 2:</strong> Bấm <strong>Create app</strong> (hoặc <strong>New app</strong>), chọn Repository <span class="badge-code">hoang207-ship/demoqtkd2</span>.
+                </li>
+                <li>
+                    <strong>Bước 3:</strong> Tại ô <strong>Main file path</strong>, nhập: <span class="badge-code">app.py</span>.
+                </li>
+                <li>
+                    <strong>Bước 4:</strong> Bấm <strong>Deploy!</strong> — Trong vòng 1 phút, ứng dụng sẽ có link online vĩnh viễn (ví dụ: <span class="badge-code">https://demoqtkd2.streamlit.app</span>) đầy đủ WebSocket, nạp Google Sheets và chạy 6 bước mượt mà!
+                </li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            © 2026 GrowthMetric Marketing Campaign Analytics Agent • Admin: Vũ Ruy Hoàng • All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>
+
