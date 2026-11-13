@@ -1,0 +1,11 @@
+﻿ma_sp,ten_sp,danh_muc,don_vi,gia_niem_yet,ton_kho,lead_time_co_hang,lead_time_nhap_hang,ghi_chu
+SRV-DELL-R750,"Máy chủ Dell PowerEdge R750 2x Xeon Silver 4314, 64GB RAM, 2x 960GB SSD",Máy chủ & Lưu trữ,Bộ,135000000,4,2,14,Bảo hành chính hãng 36 tháng ProSupport
+SW-CISCO-C9200L,"Switch Cisco Catalyst C9200L-24P-4G-E 24 cổng PoE+, 4x 1G SFP",Thiết bị mạng,Cái,42000000,10,1,21,Bao gồm Network Essentials License
+FW-FORTI-80F,Tường lửa Fortinet FortiGate FG-80F Hardware Plus 1 Yr UTP,Bảo mật & An ninh mạng,Cái,48500000,6,1,14,Bao gồm license bảo mật UTP 1 năm
+LAP-DELL-L5540,"Laptop Doanh nghiệp Dell Latitude 5540 Core i7-1365U, 16GB, 512GB SSD",Thiết bị văn phòng,Chiếc,24500000,25,1,7,"Windows 11 Pro, bảo hành tận nơi 3 năm"
+LAP-THINK-T14,"Laptop Lenovo ThinkPad T14 Gen 4 Core i5-1335U, 16GB RAM, 512GB SSD",Thiết bị văn phòng,Chiếc,26800000,3,1,10,Tiêu chuẩn độ bền quân đội MIL-STD-810H
+MON-DELL-U2724D,Màn hình chuyên nghiệp Dell UltraSharp U2724D 27 inch 2K 120Hz IPS Black,Thiết bị văn phòng,Chiếc,11500000,18,1,5,Chuẩn màu đồ họa 98% DCI-P3
+RACK-APC-42U,Tủ mạng Server APC NetShelter SX 42U 600mm x 1070mm Enclosure,Hạ tầng Trung tâm dữ liệu,Tủ,32000000,2,2,15,Đầy đủ phụ kiện thanh PDU & quản lý cáp
+UPS-APC-3KVA,Bộ lưu điện APC Smart-UPS SRT 3000VA RM 230V 2U On-Line,Hạ tầng Trung tâm dữ liệu,Bộ,54000000,5,1,14,Thời gian lưu điện mở rộng
+SRV-IMPL-01,"Dịch vụ Triển khai, Cài đặt Hệ thống Mạng & Máy chủ Doanh nghiệp",Dịch vụ Công nghệ,Gói,15000000,999,1,2,Kỹ sư chuyên môn của Minh An thực hiện onsite
+SRV-CARE-12M,Gói Bảo trì & Hỗ trợ Kỹ thuật Minh An Care 24/7 (12 tháng),Dịch vụ Công nghệ,Gói,18000000,999,1,1,Cam kết phản hồi trong 2 giờ
